@@ -42,7 +42,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          java-version: 8
+          java-version: 1.8
           distribution: 'temurin'
 
       # Perform SAST and optionally SCA scan via Fortify on Demand/Fortify Hosted/Software Security Center, then
@@ -61,7 +61,7 @@ jobs:
           FOD_USER: ${{secrets.FOD_USER}}
           FOD_PASSWORD: ${{secrets.FOD_PAT}}
           ### Optional configuration when integrating with Fortify on Demand
-          # EXTRA_PACKAGE_OPTS: -oss                       # Extra 'scancentral package' options, like '-oss'' if
+          EXTRA_PACKAGE_OPTS: -oss                       # Extra 'scancentral package' options, like '-oss'' if
                                                            # Debricked SCA scan is enabled on Fortify on Demand
           # EXTRA_FOD_LOGIN_OPTS: --socket-timeout=60s     # Extra 'fcli fod session login' options
           # FOD_RELEASE: MyApp:MyRelease                   # FoD release name, default: <org>/<repo>:<branch>; may
