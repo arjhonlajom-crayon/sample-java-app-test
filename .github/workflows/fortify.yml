@@ -42,7 +42,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          java-version: 17
+          java-version: 8
           distribution: 'temurin'
 
       # Perform SAST and optionally SCA scan via Fortify on Demand/Fortify Hosted/Software Security Center, then
@@ -54,6 +54,7 @@ jobs:
         uses: fortify/github-action@afb2d9e467caf7c6ad273799fc1b65ac492b0de2
         with:
           sast-scan: true
+          debricked-sca-scan: true
         env:
           ### Required configuration when integrating with Fortify on Demand
           FOD_URL: https://trial.fortify.com
