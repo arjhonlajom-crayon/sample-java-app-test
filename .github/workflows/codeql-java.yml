@@ -28,7 +28,7 @@ on:
     branches:
     - main
     paths:
-    - .github/workflows/codeql-java-analysis.yml
+    - .github/workflows/codeql-java.yml
     - lang/java/**
     - pom.xml
 
@@ -46,6 +46,8 @@ jobs:
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: moderate
+          base-ref: ${{ github.event.pull_request.base.sha || 'main' }}
+          head-ref: ${{ github.event.pull_request.head.sha || github.ref }}
 
           # Use comma-separated names to pass list arguments:
           deny-licenses: LGPL-2.0, BSD-2-Clause
