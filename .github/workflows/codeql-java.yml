@@ -37,6 +37,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v4
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: moderate
+
+          # Use comma-separated names to pass list arguments:
+          deny-licenses: LGPL-2.0, BSD-2-Clause
 
   trivy-scan:
     name: Trivy Scan
